@@ -8,7 +8,7 @@ public class ListaDuplamente {
 
 
     
- boolean addInicio(Contato c){
+    boolean addInicio(Contato c){
         if(this.inicio ==null){
             this.inicio=c;
             this.fim=c;
@@ -23,17 +23,7 @@ public class ListaDuplamente {
         }
     }
    
-    
-    public void mostrar(){
-    	if(inicio!=null)
-    		inicio.mostrar();
-    	else
-    		System.out.println("\n Negocio Vazio");
-    	
-    }
-    
-
-    
+  
     public String nomeUnico(String sobrenome, String nome){
     	String r = "Nao repetido, passou pelo laço";
     	
@@ -44,6 +34,7 @@ public class ListaDuplamente {
     	else{
     		Contato aux = Main.lista.inicio;
     		r=aux.nome.concat(aux.sobrenome)+" "+ nome.concat(sobrenome); //mesma coisa, apenas pra saber onde buga
+    		r = "nome disponível";
     		while(aux != null){
     			if(aux.nome.concat(aux.sobrenome).equals(nome.concat(sobrenome)))
     			{
@@ -108,11 +99,7 @@ public class ListaDuplamente {
     	}            
 
     }
-    	
-    
-    
-    
-    
+    	 
     boolean addFim(Contato c){
         if(this.inicio ==null){
              return addInicio(c);
@@ -125,95 +112,7 @@ public class ListaDuplamente {
         }
     }
     
-    
-    
-    public boolean addMeio(Contato c, int p){
-    	Contato novo = c;
-    	Contato aux = this.inicio;
-		
-		if(p==0){
-			this.addInicio(c);
-		}
-		else if(p==(qtd-1)){
-			this.addFim(c);
-		}
-		else if(p<qtd){
-			this.addInicio(c);
-			System.out.println("Posição não existente, foi adicionado no inicio");
-		}else{
-			for (int i=0; i<p; i++){
-				aux = aux.proximo;
-			}
-			novo.anterior = aux.anterior;
-			novo.proximo = aux;
-			aux.anterior = novo;
-		}
-		return false;
-	}
-    
-    public boolean removeInicio(){
-		if(this.inicio == null){
-			System.out.println("Lista Vazia");
-		}else{
-			this.inicio = this.inicio.proximo;
-			qtd--;
-		}
-		
-		return false;
-	}
-	
-	public boolean removeFim(){
-		if(this.inicio == null){
-			System.out.println("Lista Vazia");
-		}if (this.inicio==this.fim){
-			this.inicio=null;
-			this.fim=null;
-			qtd--;
-		}else{
-			Contato aux, pen;
-			aux=this.inicio;
-			pen=aux;
-			while(aux!=null){
-				pen = aux;
-				aux = pen.proximo;
-			}
-			pen.proximo=null;
-			this.fim = pen;
-			qtd--;
-		}
-		
-		return false;
-	}
-	
-	public boolean listaAsc(){
-		
-		return false;
-	}
-	
-	public boolean listaDesc(){
-		return false;
-	}
-	
-	public boolean removeMeio(int p){
-		Contato aux = this.inicio;
-		Contato anterior = null;
-		
-		if(p==0){
-			this.removeInicio();
-			}
-		else if(p==(qtd-1)){
-			this.removeFim();
-		}else{
-			for(int i=0; i<p; i ++){
-				anterior = aux;
-				aux = aux.proximo;
-			}
-			qtd--;
-		}
-		
-		return false;
-	}
-	
+   
 	public boolean removePorNome(String nome, String sobrenome)
 	{
 		if(this.inicio == null)
