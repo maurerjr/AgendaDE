@@ -79,7 +79,7 @@ public class ListaDuplamente {
 
                 for (int l = 0; l < vet.length - 1; l++) {
                 	
-                	int m = vet[l].nome.compareTo(vet[l+1].nome.concat(vet[l+1].sobrenome));
+                	int m = vet[l].nome.concat(vet[l].sobrenome).compareTo(vet[l+1].nome.concat(vet[l+1].sobrenome));
                 	if (m >0) {
                         aux = vet[l];
                         vet[l] = vet[l + 1];
